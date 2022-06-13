@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="card card-body bg-light">
+        <h1>Add Product Type</h1>
+        <form #productTypeForm="ngForm">
+        
+            <div class="form-group">
+                <label for="name">Name <span class="text-danger">*</span></label>
+                <input type="text" name="name" id="name" class="form-control" [(ngModel)]="productType.name"
+                    #name="ngModel"
+                    [ngClass]="{ 'is-invalid': (name.touched || name.dirty) && name.invalid }" required>
+                <div *ngIf="(name.touched || name.dirty) && name.invalid " class="text-danger">
+                    <p *ngIf="name.errors?.required">ce champ est obligatoire</p>
+                </div>
+        
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger mr-1" routerLink="/index.html">Cancel</button>
+                <button type="button" [disabled]="productTypeForm.invalid" class="btn btn-success" (click)="addProductType()">Save</button>
+            </div>
+        
+        </form>
+    </div>
+</div>
